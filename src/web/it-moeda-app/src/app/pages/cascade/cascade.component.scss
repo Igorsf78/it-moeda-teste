@@ -1,0 +1,35 @@
+table {
+  width: 40%;
+}
+
+th {
+  background-color: #a475e070;
+  color: white;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+mat-header-cell {
+  color: #a475e070;
+  width: auto;
+  font-size: small;
+}
+
+mat-cell,
+mat-header-cell,
+mat-footer-cell {
+  flex: 1;
+  display: inline-block;
+  align-items: center;
+  overflow: hidden;
+  min-height: initial;
+  height: auto;
+  width: auto;
+}
+
+.button-row {
+  display: table-cell;
+  width: 490px;
+}

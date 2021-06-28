@@ -1,0 +1,141 @@
+<div class="container">
+  <mat-card class="mat-elevation-z8 half-width">
+    <mat-toolbar color="primary"
+      style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+      <div style="color:white;text-align: right;">
+        Cascanding Dropdown with Material, SqlServer
+      </div>
+    </mat-toolbar>
+    <br>
+    <br>
+
+    <form novalidate (ngSubmit)="onFormSubmit()" [formGroup]="cascadeForm">
+      <table>
+        <tr>
+          <td class="tbl1">
+            <mat-form-field appearance="fill">
+              <mat-label>Diretoria</mat-label>
+              <mat-select (selectionChange)="FillSuperintendencia($event)" formControlName="diretoria"
+                matTooltip="Selecione Diretoria" autocomplete="off">
+                <mat-option *ngFor="let diretoria of (allDiretorias | async)" [value]="diretoria.diretoria">
+                  {{diretoria.diretoria}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td class="tbl1">
+            <mat-form-field appearance="fill">
+              <mat-label>Superintendência</mat-label>
+              <mat-select (selectionChange)="FillGerencias($event)" formControlName="superintendencia"
+                matTooltip="Selecione Superintendência" autocomplete="off">
+                <mat-option *ngFor="let supte of (allSuperintendencias | async)" [value]="supte.superintendencia">
+                  {{supte.superintendencia}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="tbl1">
+            <mat-form-field appearance="fill">
+              <mat-label>Gerência</mat-label>
+              <mat-select (selectionChange)="FillCoordenacoes($event)" formControlName="gerencia"
+                matTooltip="Selecione Gerência" autocomplete="off">
+                <mat-option *ngFor="let gerencia of (allGerencias | async)" [value]="gerencia.gerencia">
+                  {{gerencia.gerencia}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td class="tbl1">
+            <mat-form-field appearance="fill">
+              <mat-label>Coordenação</mat-label>
+              <mat-select (selectionChange)="FillUsuarios($event)" formControlName="coordenacao"
+                matTooltip="Selecione Coordenação" autocomplete="off">
+                <mat-option *ngFor="let coordenacao of (allCoordenacoes | async)" [value]="coordenacao.coordenacao">
+                  {{coordenacao.coordenacao}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="tbl1">
+            <mat-form-field appearance="fill">
+              <mat-label>Usuário</mat-label>
+              <mat-select (selectionChange)="GetSelectedUsuario($event)" formControlName="gerencia"
+                matTooltip="Selecione Usuário" autocomplete="off">
+                <mat-option *ngFor="let usuario of (allUsuarios | async)" [value]="usuario.usuario">
+                  {{usuario.usuario}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td class="tbl1">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Data Contábil Inicio</mat-label>
+              <input matInput [matDatepicker]="dataContabilInicio" id="dataContabilInicio"
+                formControlName="dataContabilInicio">
+              <mat-datepicker-toggle matSuffix [for]="dataContabilInicio">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #dataContabilInicio></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td class="tbl1">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Data Contábil Fim</mat-label>
+              <input matInput [matDatepicker]="dataContabilFim" id="dataContabilFim" formControlName="dataContabilFim">
+              <mat-datepicker-toggle matSuffix [for]="dataContabilFim">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #dataContabilFim></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="tbl1">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Data Emissão Inicio</mat-label>
+              <input matInput [matDatepicker]="dataEmissaoInicio" id="dataEmissaoInicio"
+                formControlName="dataEmissaoInicio">
+              <mat-datepicker-toggle matSuffix [for]="dataEmissaoInicio">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #dataEmissaoInicio></mat-datepicker>
+            </mat-form-field>
+          </td>
+          <td class="tbl1">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Data Emissão Fim</mat-label>
+              <input matInput [matDatepicker]="dataEmissaoFim" id="dataEmissaoFim" formControlName="dataEmissaoFim">
+              <mat-datepicker-toggle matSuffix [for]="dataEmissaoFim">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #dataEmissaoFim></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <mat-divider></mat-divider>
+        <br>
+        <tr>
+          <td class="tbl1">
+            <div class="button-row">
+              <button mat-flat-button color="primary">Pesquisar</button>
+              </div>
+          </td>
+        </tr>
+
+
+
+      </table>
+    </form>
+  </mat-card>
+</div>
